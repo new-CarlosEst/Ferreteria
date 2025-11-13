@@ -1,35 +1,34 @@
 <?php
     //Me traigo las clases de sus respectivas rutas
     require_once __DIR__ . "/Conexion.php";
-    require_once __DIR__ . "/../class/Producto.php";
+    require_once __DIR__ . "/../class/Cesta.php";
 
     /**
-     * Clase DAO (Data Acess Object) que contendra varios objetos Producto con sus datos 
+     * Clase DAO (Data Acess Object) que contendra varios objetos Cesta con sus datos 
      * Tiene un array con los objetos y ademas una conexion a una DB para tener persistencia en esos datos
-     * Tambien tendra metodos para el manejo de la tabla productos y para consultar/borrar/insertar datos
+     * Tambien tendra metodos para el manejo de la tabla productospedidos y para consultar/borrar/insertar datos
      * 
      * @author Carlos Esteban Diez (new-CarlosEst)
      */
-    class ProductoDAO{
+    class CestaDAO{
         /**
          * @var PDO Conexion a la db
          */
         private $conexion;
 
         /**
-         * @var Producto[] Array con los objetos producto que cargare desde el DB
+         * @var Cesta[] Array con los objetos cesta que cargare desde el DB (Desde la tabla productospedidos)
          */
-        private $listaProductos;
-
+        private $cesta;
 
         /**
-         * Constructor para crearme un objeto ProductoDAO que hara la funcion de contendor
+         * Constructor para crearme un objeto CestaDAO que hara la funcion de contendor
          */
         public function __construct(){
             //Me hago la instancia de la clase conexion para que siempre sea la misma conexion
             $this->conexion = Conexion::getInstancia()->getConexion();
-            //Inicializo el array
-            $this->listaProductos = [];
+            //Me inicializo el array
+            $this->cesta = [];
             
         }
     }

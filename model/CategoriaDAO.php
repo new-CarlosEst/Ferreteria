@@ -6,7 +6,7 @@
     /**
      * Clase DAO (Data Acess Object) que contendra varios objetos Categoria con sus datos 
      * Tiene un array con los objetos y ademas una conexion a una DB para tener persistencia en esos datos
-     * Tambien tendra metodos para el manejo de la tabla Categorias y para consultar/borrar/insertar datos
+     * Tambien tendra metodos para el manejo de la tabla categorias y para consultar/borrar/insertar datos
      * 
      * @author Carlos Esteban Diez (new-CarlosEst)
      */
@@ -19,11 +19,16 @@
         /**
          * @var Categoria[] Array con los objetos categoria que cargare desde el DB
          */
-        private $listaCategorias = [];
+        private $listaCategorias;
 
+        /**
+         * Constructor para crearme un objeto CategoriaDAO que hara la funcion de contendor
+         */
         public function __construct(){
             //Me hago la instancia de la clase conexion para que siempre sea la misma conexion
             $this->conexion = Conexion::getInstancia()->getConexion();
+            //incializo el array
+            $listaCategorias = [];
             
         }
     }

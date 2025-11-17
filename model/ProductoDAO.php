@@ -30,7 +30,6 @@
             $this->conexion = Conexion::getInstancia()->getConexion();
             //Inicializo el array
             $this->listaProductos = [];
-            
         }
     }
 ?> 

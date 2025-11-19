@@ -17,18 +17,35 @@ body{
 
 #container-form{
     background-color: white;
-    width: 56%;
-    height: 48%;
+    max-width: 56%;
+    max-height: 48%;
     border-radius: 20px;
+    width: 46%;
     display: flex;
+    /* Si le pones el flex direction a column (por defecto es row) 
+    ahora el justify-content alinea cosas en el eje y (vertical) y el aling items en el eje x (horizontal)
+    Esto es pq cambias el eje principal de X a Y. El justify content siempre actua sobr el eje principal */
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.boton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 80px 0;
+}
+
 img{
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
 }
 
 h1{
@@ -37,10 +54,12 @@ h1{
     font-size: 60px;
     color: #514C66;
     justify-content: center;
+    margin: 80px 0px;
 }
 
 label{
     color: #513c66;
+    font-size: 26px;
 }
 
 .input{
@@ -48,9 +67,34 @@ label{
     display: flex;
     align-items: center;
     width: 400px;
+    height: 26px;
+    margin: 20px 0px;
 }
 
 input{
+    color: #514C66;
+    font-size: 20px;
+    margin: 0 2px;
+    width: 344px;
+    height: 100%;
     background-color: #F5F5F5;
     border: 0 hidden;
+}
+
+input:focus{
+    outline: none;
+}
+
+button{
+    width: 236px;
+    height: 71px;
+    border-radius: 40px;
+    border: none;
+    font-size: 30px;
+    background-color: #8780A7;
+    color: #FFFFFF;
+}
+
+button:hover{
+    background-color: #625B7C;
 }

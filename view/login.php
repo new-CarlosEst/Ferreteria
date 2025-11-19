@@ -24,11 +24,16 @@
             <label for="contra">Contraseña</label>
             <div class="input">
                 <img src="../public/resources/icons/IconoirLock.png" alt="iconContra">
-                <input type="password">
+                <input type="password" id = "contra">
+                <img src="../public/resources/icons/OpenEye.png" alt="ojo" id="verContra">
             </div>
 
-            <button>Iniciar Sesion</button>
+            <div class="boton">
+                <button>Iniciar Sesion</button>
+            </div>
         </form>
     </div>
+
+    <script src="../public/js/login.js"></script>
 </body>
 </html>

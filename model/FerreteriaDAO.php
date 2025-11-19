@@ -17,18 +17,11 @@
         private $conexion;
 
         /**
-         * @var Ferreteria[] Array con los objetos ferreteria que cargare desde el DB
-         */
-        private $listaFerreteria;
-
-        /**
          * Constructor para crearme un objeto FerreteriaDAO que hara la funcion de contendor
          */
         public function __construct(){
             //Me hago la instancia de la clase conexion para que siempre sea la misma conexion
             $this->conexion = Conexion::getInstancia()->getConexion();
-            //inicializo el array 
-            $listaFerreteria = [];
             
         }
     }

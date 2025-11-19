@@ -16,11 +16,6 @@
          */
         private $conexion;
 
-        /**
-         * @var Producto[] Array con los objetos producto que cargare desde el DB
-         */
-        private $listaProductos;
-
 
         /**
          * Constructor para crearme un objeto ProductoDAO que hara la funcion de contendor
@@ -28,8 +23,6 @@
         public function __construct(){
             //Me hago la instancia de la clase conexion para que siempre sea la misma conexion
             $this->conexion = Conexion::getInstancia()->getConexion();
-            //Inicializo el array
-            $this->listaProductos = [];
         }
     }
 ?> 

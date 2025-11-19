@@ -17,19 +17,12 @@
         private $conexion;
 
         /**
-         * @var Pedido[] Array con los objetos pedido que cargare desde el DB
-         */
-        private $listaPedidos;
-
-        /**
          * Constructor para crearme un objeto PedidoDAO que hara la funcion de contendor
          */
         public function __construct(){
             //Me saco a la instancia de la conexion y llamo al metodo getConexion para recibir el PDO
             //Esto lo hago asi para que siempre tenga una misma conexion en todos mis archivos y no sea diferente
             $this->conexion = Conexion::getInstancia()->getConexion();
-            //inicializo el array
-            $this->listaPedidos = [];
         }
     }
 ?> 

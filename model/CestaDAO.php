@@ -17,18 +17,11 @@
         private $conexion;
 
         /**
-         * @var Cesta[] Array con los objetos cesta que cargare desde el DB (Desde la tabla productospedidos)
-         */
-        private $cesta;
-
-        /**
          * Constructor para crearme un objeto CestaDAO que hara la funcion de contendor
          */
         public function __construct(){
             //Me hago la instancia de la clase conexion para que siempre sea la misma conexion
             $this->conexion = Conexion::getInstancia()->getConexion();
-            //Me inicializo el array
-            $this->cesta = [];
             
         }
     }

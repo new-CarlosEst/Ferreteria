@@ -1,3 +1,8 @@
+<?php
+    //Destruyo la sesion
+    require_once __DIR__ . ("/../util/cerrarSesion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,18 +18,20 @@
 <body>
     <div id="container-form">
         <h1>Iniciar Sesión</h1>
-        
-        <form action="">
+
+        <!--Enviare todo a index.php con datos de a que contorlador tiene que ir con get en el formulario usando ?,
+        en este caso al controlador de las clases de ferreteria que es donde comprobara los datos de si la contraseña y el correo es correcto -->
+        <form action="../index.php?controller=ferreteria&action=login" method="post">
             <label for="correo">Correo</label>
             <div class="input">
                 <img src="../public/resources/icons/IconoirUser.png" alt="iconoUsuario">
-                <input type="text">
+                <input type="text" name="correo">
             </div>
 
             <label for="contra">Contraseña</label>
             <div class="input">
                 <img src="../public/resources/icons/IconoirLock.png" alt="iconContra">
-                <input type="password" id = "contra">
+                <input type="password" id = "contra" name="password">
                 <img src="../public/resources/icons/OpenEye.png" alt="ojo" id="verContra">
             </div>
 

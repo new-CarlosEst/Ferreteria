@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E6E6EE;
+}
+
+h1 {
+    padding: 150px 0;
+    color: #D05E26;
+    font-size: 90px;
+}
+
+a {
+    font-size: 40px;
+    opacity: 0.5;
+    color: #D05E26;
+}
+
+a:hover{
+    color: #625B7C;
+}
+
+a:active{
+    color: #8A38F5;
+}

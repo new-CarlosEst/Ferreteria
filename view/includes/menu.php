@@ -12,7 +12,7 @@
             <a href="" class="elemento">Mantenimiento</a>
             <a href="" class="elemento">Pedidos</a>
             <a href="" class="elemento">Suministros</a>
-            <a href="" class="elemento">Cerrar Sesion</a>
+            <a href="./logout.php" class="elemento">Cerrar Sesion</a>
             <span id="usuario" class="elemento">
                 <?php //Meter el correo que saque desde el login ?>
             </span>

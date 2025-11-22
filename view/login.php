@@ -32,11 +32,11 @@
             <div class="input">
                 <img src="../public/resources/icons/IconoirLock.png" alt="iconContra">
                 <input type="password" id = "contra" name="password">
-                <img src="../public/resources/icons/OpenEye.png" alt="ojo" id="verContra">
+                <img src="../public/resources/icons/CloseEye.png" alt="ojo" id="verContra">
             </div>
 
             <div class="boton">
-                <button>Iniciar Sesion</button>
+                <button type="submit">Iniciar Sesion</button>
             </div>
         </form>
     </div>

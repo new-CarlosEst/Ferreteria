@@ -53,17 +53,19 @@ class Ferreteria {
 
     /**
      * Constructor para crear un objeto Ferreteria
+     * Se pondra pasar parametros pero en caso que invoque vacio se pondra todo en null 
      * 
-     * @param int $cod Codigo de la ferreteria
-     * @param string $nb Nombre de la ferreteria
-     * @param string $correo Correo de la ferreteria
-     * @param string $clave Contraseña de la ferreteria 
-     * @param string $pais Pais de la ferreteria
-     * @param string $ciudad Ciudad de la ferreteria
-     * @param string $dir Direccion de la ferreteria
-     * @param int $rol Rol del usuario de la ferreteria
+     * @param int|null $cod Codigo de la ferreteria
+     * @param string|null $nb Nombre de la ferreteria
+     * @param string|null $correo Correo de la ferreteria
+     * @param string|null $clave Contraseña de la ferreteria 
+     * @param string|null $pais Pais de la ferreteria
+     * @param int/null $cp Codigo postal
+     * @param string|null $ciudad Ciudad de la ferreteria
+     * @param string|null $dir Direccion de la ferreteria
+     * @param int|null $rol Rol del usuario de la ferreteria
      */
-    public function __construct(int $cod, string $nb, string $correo, string $clave, string $pais, int $cp, string $ciudad, string $dir, int $rol){
+    public function __construct(?int $cod = null, ?string $nb=null, ?string $correo=null, ?string $clave=null, ?string $pais=null, ?int $cp=null, ?string $ciudad=null, ?string $dir=null, ?int $rol=null){
         $this->codFerreteria = $cod;
         $this->nombre = $nb;
         $this->correo = $correo;
@@ -75,6 +77,22 @@ class Ferreteria {
         $this->rol = $rol;
     }
 
-    //TODO Hacer getters y setters necesarios y el toString (En principio solo los de clave, correo y nombre)
+    //Me hago los setters de correo y clave
+    public function setCorreo($correo){
+        $this->correo = $correo;
+    }
+
+    public function setClave($clave){
+        $this->clave = $clave;
+    }
+
+    //Me hago los getters de contraseña y correo
+    public function getClave (){
+        return $this->clave;
+    }
+
+    public function getCorreo (){
+        return $this->correo;
+    }
 }
 ?>

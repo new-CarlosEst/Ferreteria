@@ -6,8 +6,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-//Si no hay la sesion te envia a login.php
-if (!isset($_SESSION['sesion'])) {
+//Si se ha entrado mediante el login
+if (!isset($_SESSION['login'])) {
     header("Location: view/login.php");
     exit();
 }

@@ -24,11 +24,11 @@
         /**
          * Constructor para crear un objeto Categoria
          * 
-         * @param int $codCat Codigo del objeto categoria
-         * @param string $nb Nombre del objeto categoria
-         * @param string $desc Descripcion del objeto categoria
+         * @param int|null $codCat Codigo del objeto categoria
+         * @param string|null $nb Nombre del objeto categoria
+         * @param string|null $desc Descripcion del objeto categoria
          */
-        public function __construct(int $codCat, string $nb, string $desc){
+        public function __construct(?int $codCat =null, ?string $nb=null, ?string $desc=null){
             $this->codCategoria = $codCat;
             $this->nombre = $nb;
             $this->descripcion = $desc;

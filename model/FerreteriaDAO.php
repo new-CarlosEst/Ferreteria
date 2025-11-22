@@ -22,7 +22,42 @@
         public function __construct(){
             //Me hago la instancia de la clase conexion para que siempre sea la misma conexion
             $this->conexion = Conexion::getInstancia()->getConexion();
-            
+        }
+
+        /**
+         * Metodo que recibe un correo y hace un sentencia sql donde coincida ese objeto y devuelve o false o el objeto
+         */
+        public function getFerreteriaByCorreo($user){
+            try {
+                //Hacemos la sentencia
+                $sql = "SELECT * FROM ferreterias WHERE Correo = :correo";
+
+                //Hacemos un prepared statement para evitar inyeccion sql 
+                $sentenciaPreparada = $this->conexion->prepare($sql);
+
+                //Bindeo el parametro $user a :correo y ejecutamos la sentencia
+                $sentenciaPreparada->bindValue(':correo', $user);
+                $sentenciaPreparada->execute();
+
+                //Meto los datos aqui en un array asociativo
+                $datosferreteria = $sentenciaPreparada->fetch(PDO::FETCH_ASSOC);
+                //Si devuelve false
+                if (!$datosferreteria){
+                    return false;
+                }
+                else{
+                    //Me hago un ferreteria con todo null, ya que solo me interesa el correo y la clave
+                    //Me lo haria con el pdo:Fetch_class pero me daba error de depracated
+                    $ferreteria = new Ferreteria();
+                    $ferreteria->setCorreo($datosferreteria["Correo"]);
+                    $ferreteria->setClave($datosferreteria["Clave"]);
+                    return $ferreteria;
+                }
+                
+            }
+            catch (PDOException $e){
+                return false;
+            }
         }
     }
 ?> 

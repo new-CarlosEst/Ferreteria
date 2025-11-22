@@ -1,3 +1,8 @@
+<?php
+    //inicio la sesion
+    require_once __DIR__ . "/../../util/iniciarSesion.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +19,9 @@
             <a href="" class="elemento">Suministros</a>
             <a href="./logout.php" class="elemento">Cerrar Sesion</a>
             <span id="usuario" class="elemento">
-                <?php //Meter el correo que saque desde el login ?>
+                <?php echo $_SESSION["correo"]; ?>
             </span>
         </nav>
     </div>
-    <!-- TODO Cambiar a .php cuando ya este maquetado -->
 </body>
 </html>

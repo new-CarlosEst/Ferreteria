@@ -1,3 +1,8 @@
+<?php 
+    //inicio la sesion
+    require_once __DIR__ . "/../util/iniciarSesion.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

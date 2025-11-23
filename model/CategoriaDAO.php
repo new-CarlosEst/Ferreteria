@@ -24,5 +24,31 @@
             $this->conexion = Conexion::getInstancia()->getConexion();
             
         }
+
+        /**
+         * Devuelve un array todas las categorias en forma de objeto, si no devuelve false
+         */
+        public function getCategorias(){
+            try{
+                //Hacemos la sentencia preparada
+                $sql = "SELECT * FROM categorias";
+                $sentenciaPreparada = $this->conexion->prepare($sql);
+
+                //Ejecutamos y la metemos en un array asociativo
+                $sentenciaPreparada->execute();
+                $datosCategoria = $sentenciaPreparada->fetchAll(PDO::FETCH_ASSOC);
+
+                //Creamos un array vacio donde iremos metiendo los objetos y recorremos el array asociativo para crear todos los objetos
+                $categorias = [];
+                foreach($datosCategoria as $categoria){
+                    $categorias[] = new Categoria($categoria["CodCat"], $categoria["Nombre"], $categoria["Descripcion"]);
+                }
+
+                return $categorias;
+
+            } catch (PDOException $e){
+                return false;
+            }
+        }
     }
 ?> 

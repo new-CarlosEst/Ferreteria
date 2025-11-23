@@ -1,0 +1,30 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoria{
+    margin-bottom: 20px;
+    width: 1340px;
+    color: #D05E26;
+    font-size: 40px;
+    text-align: start;
+}
+.categoria > * {
+    padding: 15px 0;
+}
+.desc{
+    font-size: 30px;
+    opacity: 0.5;
+}
+
+.productos{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #D05E26;
+    width: 1340px;
+    min-height: 100px;
+}

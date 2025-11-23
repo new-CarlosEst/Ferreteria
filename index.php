@@ -22,7 +22,7 @@
     switch ($controlador){
         case "ferreteria":
             $ctrl = new FerreteriaController();
-            if ($accion == "login"){
+            if ($accion === "login"){
                 $redirigir = $ctrl->login($_POST["correo"], $_POST["password"]);
                 if ($redirigir){
                     $_SESSION["login"] = true;
@@ -38,6 +38,16 @@
                 }
             }
             break;
+
+        case "producto":
+            if ($accion === "verProductos"){
+                //Me meto el id de la categoria en una sesion
+                $_SESSION["idCat"] = $_POST["categoria"];
+                //Me envio a compraProductos
+                echo '<script>
+                    window.location.href="view/compraProductos.php";
+                </script>';
+            }
     }
 }
 ?>

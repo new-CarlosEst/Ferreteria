@@ -16,7 +16,7 @@
         <nav>
             <a href="" class="elemento">Mantenimiento</a>
             <a href="" class="elemento">Pedidos</a>
-            <a href="" class="elemento">Suministros</a>
+            <a href="./productos.php" class="elemento">Suministros</a>
             <a href="./logout.php" class="elemento">Cerrar Sesion</a>
             <span id="usuario" class="elemento">
                 <?php echo $_SESSION["correo"]; ?>

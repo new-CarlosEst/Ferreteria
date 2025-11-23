@@ -34,7 +34,30 @@
             $this->descripcion = $desc;
         }
 
-        //TODO Getters y setters
-        
+        //Me hago los setters y los getters
+        public function getCodCategoria(): int {
+            return $this->codCategoria;
+        }
+
+        public function setCodCategoria(int $codCategoria): void {
+            $this->codCategoria = $codCategoria;
+        }
+
+        public function getNombre(): string {
+            return $this->nombre;
+        }
+
+        public function setNombre(string $nombre): void {
+            $this->nombre = $nombre;
+        }
+
+        public function getDescripcion(): string {
+            return $this->descripcion;
+        }
+
+        public function setDescripcion(string $descripcion): void {
+            $this->descripcion = $descripcion;
+        }
+
     }
 ?>

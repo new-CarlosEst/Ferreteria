@@ -56,6 +56,30 @@
             $this->codCategoria = $codCat;
         }
 
-        //TODO Getter y setters necesarios
+        //Getters necesarios
+        public function getCodProducto() {
+            return $this->codProducto;
+        }
+
+        public function getNombre() {
+            return $this->nombre;
+        }
+
+        public function getDescripcion() {
+            return $this->descripcion;
+        }
+
+        public function getPeso() {
+            return $this->peso;
+        }
+
+        public function getStock() {
+            return $this->stock;
+        }
+
+        public function getCodCategoria() {
+            return $this->codCategoria;
+        }
+        
     }
 ?>

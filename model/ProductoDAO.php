@@ -2,7 +2,7 @@
     //Me traigo las clases de sus respectivas rutas
     require_once __DIR__ . "/Conexion.php";
     require_once __DIR__ . "/../class/Producto.php";
-    require_once __DIR__ . "/../class/Categoria.php";
+    require_once __DIR__ . "/../model/CategoriaDao.php";
 
     /**
      * Clase DAO (Data Acess Object) que contendra varios objetos Producto con sus datos 
@@ -27,26 +27,45 @@
         }
 
         /**
-         * Funcion que saca el nombre de categoria y su descripccion y las pinta
+         * Funcion que devuelve el objeto categoria al controlador de productos
          */
-        public function getCategoriaByID($idCat){
-            try{
-                //Hacemos la sentencia
-                $sql = "SELECT * FROM categorias WHERE CodCat = :id";
+        public function sacarCategoria($idCat){
+            $dao = new CategoriaDAO();
+            return $dao->getCategoriaById($idCat);
+        }
 
-                //Hacemos un prepared statement para evitar inyeccion sql 
+        /**
+         * Funcion que devuelve un array de objetos con todos los productos de un categoria o false si da error
+         */
+        public function getProductosByCategoria($idCat){
+            try {
+                //Hacemos un prepared statement
+                $sql = "SELECT * FROM productos WHERE Categoria = :id";
                 $sentenciaPreparada = $this->conexion->prepare($sql);
 
-                //Bindeo el parametro $user a :correo, ejecutamos la sentencia y lo meto todo en un array asociativo 
-                $sentenciaPreparada->bindValue(':id', $idCat);
+                //Bindeo los parametros, ejecuto la sentencia y metodo todas las consultas en un array asociativo
+                $sentenciaPreparada->bindParam(":id", $idCat);
                 $sentenciaPreparada->execute();
-                $datosCategoria = $sentenciaPreparada->fetch(PDO::FETCH_ASSOC);
+                $datosProductos = $sentenciaPreparada->fetchAll(PDO::FETCH_ASSOC);
 
-                //Devolvemos el objeto
-                return new Categoria($datosCategoria["CodCat"], $datosCategoria["Nombre"], $datosCategoria["Descripcion"]);
+                //recorro el array asociativo y metodo todos lso datos en objetos y en un array con esos objetos
+                $productos = [];
+                foreach ($datosProductos as $producto){
+                    $productos[] = new Producto(
+                        $producto["CodProd"],
+                        $producto["Nombre"],
+                        $producto["Descripcion"],
+                        $producto["Peso"],
+                        $producto["Stock"],
+                        $producto["Categoria"]
+                    );
+                }
+                //Devuelvo el array
+                return $productos;
+
             } catch (PDOException $e){
                 return false;
             }
-        }
+            }
     }
 ?> 

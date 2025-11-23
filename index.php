@@ -27,7 +27,7 @@
                 if ($redirigir){
                     $_SESSION["login"] = true;
                     echo '<script>
-                        window.location.href = "view/productos.php";
+                        window.location.href = "view/landing.php";
                     </script>';
                 } else {
                     //me envio con window.location pa no funcion el header si hay cosas antes

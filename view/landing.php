@@ -14,8 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/menu.css">
-    <!-- Teng que poner la ruta absoluta a la raiz del proyecto pq si no, no me coge los estilos -->
-    <link rel="stylesheet" href="/ferreteria/public/css/productos.css">
+    <link rel="stylesheet" href="../public/css/landing.css">
     <title>Productos</title>
 </head>
 <body>

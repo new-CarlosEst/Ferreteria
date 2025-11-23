@@ -25,14 +25,24 @@
         <div class="categoria">
             <?php
             $ctrl = new ProductoController();
-            echo $ctrl->pintarCategorias((int)$_SESSION["idCat"]);
+            echo $ctrl->datosCategoria((int)$_SESSION["idCat"]);
             ?>
         </div>
-
-        <form action="../index.php?controller=pedido&action=pedido" method="post">
-        <div class="productos">
-            
+        
+        <div class="header-prod">
+            <div class="nombre">Nombre</div>
+            <div class="desc">Descripcion</div>
+            <div class="peso">Peso</div>
+            <div class="stock">Stock</div>
+            <div class="unidad">Comprar</div>
+            <div class="boton"></div>
         </div>
+        <form action="../index.php?controller=pedido&action=pedido" method="post">
+            <div class="productos">
+                <?php
+                    echo $ctrl->mostrarProductos((int)$_SESSION["idCat"]);
+                ?>
+            </div>
         </form>
     </main>
 </body>

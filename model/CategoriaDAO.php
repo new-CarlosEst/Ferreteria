@@ -50,5 +50,25 @@
                 return false;
             }
         }
+
+        public function getCategoriaById($idCat){
+            try{
+                //Hacemos la sentencia
+                $sql = "SELECT * FROM categorias WHERE CodCat = :id";
+
+                //Hacemos un prepared statement para evitar inyeccion sql 
+                $sentenciaPreparada = $this->conexion->prepare($sql);
+
+                //Bindeo el parametro $user a :correo, ejecutamos la sentencia y lo meto todo en un array asociativo 
+                $sentenciaPreparada->bindValue(':id', $idCat);
+                $sentenciaPreparada->execute();
+                $datosCategoria = $sentenciaPreparada->fetch(PDO::FETCH_ASSOC);
+
+                //Devolvemos el objeto
+                return new Categoria($datosCategoria["CodCat"], $datosCategoria["Nombre"], $datosCategoria["Descripcion"]);
+            } catch (PDOException $e){
+                return false;
+            }
+        }
     }
 ?> 

@@ -1,6 +1,8 @@
 <?php 
     //inicio la sesion
     require_once __DIR__ . "/../util/iniciarSesion.php";
+    //compruebo la session
+    require_once __DIR__ . "/../util/comprobarSesion.php";
 ?>
 
 <!DOCTYPE html>

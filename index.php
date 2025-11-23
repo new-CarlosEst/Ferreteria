@@ -1,7 +1,11 @@
 <?php
-    //Si no es un intento de login
-    if (!isset($_GET['action']) || $_GET['action'] !== 'login') {
-        require_once __DIR__ . "/util/comprobarSesion.php";
+    //Si llamo a la raiz (o a index.php me envia a login)
+    session_start();
+
+    // Si no existe sesión, y no hay un form post me envia a login
+    if (!isset($_SESSION["usuario"]) && $_SERVER["REQUEST_METHOD"] != "POST") {
+        header("Location: view/login.php");
+        exit();
     }
 
     //Importo todos los controladores
@@ -9,7 +13,6 @@
 
     //si entro con post
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $_SESSION["login"] = true;
         $controller = $_GET["controller"];
         $action = $_GET["action"];
         irControlador($controller, $action);
@@ -22,6 +25,7 @@
             if ($accion == "login"){
                 $redirigir = $ctrl->login($_POST["correo"], $_POST["password"]);
                 if ($redirigir){
+                    $_SESSION["login"] = true;
                     echo '<script>
                         window.location.href = "view/productos.php";
                     </script>';

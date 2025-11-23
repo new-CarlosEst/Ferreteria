@@ -15,7 +15,7 @@
     <div id="container-menu">
         <nav>
             <a href="./mantenimiento.php" class="elemento">Mantenimiento</a>
-            <a href="" class="elemento">Pedidos</a>
+            <a href="./lineaPedido.php" class="elemento">Pedidos</a>
             <a href="./landing.php" class="elemento">Suministros</a>
             <a href="./logout.php" class="elemento">Cerrar Sesion</a>
             <span id="usuario" class="elemento">

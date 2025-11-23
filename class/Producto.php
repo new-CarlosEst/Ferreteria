@@ -43,11 +43,11 @@
          * @param int $codProd Codigo del producto
          * @param string $nb Nombre del producto
          * @param string $desc Descripcion del producto
-         * @param int $peso Peso del producto
+         * @param float $peso Peso del producto
          * @param int $stock Stock del producto
          * @param int $codCat Codigo de la cetegoria a la que pertence el producto
          */
-        public function __construct(int $codProd, string $nb, string $desc, int $peso, int $stock, int $codCat){
+        public function __construct(int $codProd, string $nb, string $desc, float $peso, int $stock, int $codCat){
             $this->codProducto = $codProd;
             $this->nombre = $nb;
             $this->descripcion = $desc;
@@ -80,6 +80,6 @@
         public function getCodCategoria() {
             return $this->codCategoria;
         }
-        
+
     }
 ?>

@@ -71,6 +71,24 @@
                     </script>';
                 }
             }
+
+            else if ($accion === "quitarUnidades"){
+                $idProducto = (int)$_POST["producto"];
+                $unidades = isset($_POST["unidades"][$idProducto]) ? (int)$_POST["unidades"][$idProducto] : 0;
+
+                if ($unidades <= 0){
+                    echo '<script>
+                        window.alert("No puedes introducir 0 o menos unidades a eliminar");
+                        window.location.href="view/lineaPedido.php";
+                    </script>';
+                }
+                else {
+                    $ctrl->eliminarUnidades($idProducto, $unidades);
+                    echo '<script>
+                        window.location.href="view/lineaPedido.php";
+                    </script>';
+                }
+            }
             break;
     }
 }

@@ -69,6 +69,17 @@
                 }
             }
         }
+
+        public function eliminarUnidades($codProd, $unidades){
+            foreach ($_SESSION['cesta'] as &$item) {
+                if ($item['codProducto'] == $codProd) {
+                    // Si ya existe, solo sumar las unidades en la cesta
+                    $item['unidades'] -= $unidades;
+                    break;
+                }
+            }
+            unset($item); // Quito la referencia para que no lo puedo modificar
+        }
     }
 
 

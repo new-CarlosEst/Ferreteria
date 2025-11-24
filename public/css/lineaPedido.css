@@ -131,3 +131,18 @@ button{
 .par button:hover{
     background-color: #8a86b5;
 }
+
+.validar button{
+    background-color: #E6E6EE;
+    color: #D05E26;
+    opacity: 0.5;
+    text-decoration: underline #D05E26;
+    font-size: 20px;
+}
+
+.validar{
+    margin: 20px;
+    width: 1340px;
+    display: flex;
+    justify-content: left;
+}

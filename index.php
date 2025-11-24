@@ -89,6 +89,9 @@
                     </script>';
                 }
             }
+            else if ($accion === "validar"){
+                
+            }
             break;
     }
 }

@@ -29,12 +29,13 @@
         /**
          * Constructor para crear un objeto Pedido
          * 
+         * @param int $cod Codigo del pedido
          * @param DateTime $fecha Fecha en la que se realizo el pedido (formato YYYY-MM-DD HH:MM:SS)
          * @param int $enviado 0 si <b>NO</b> esta enviado, 1 si esta enviado
          * @param int $codFerr Codigo de la ferreterai a la que pertence el pedido
          */
-        public function __construct(DateTime $fecha, int $enviado, int $codFerr){
-            $this->codPedido = null;
+        public function __construct(int $cod , DateTime $fecha, int $enviado, int $codFerr){
+            $this->codPedido = $cod;
             $this->fecha = $fecha;
             $this->enviado = $enviado;
             $this->codFerreteria = $codFerr;

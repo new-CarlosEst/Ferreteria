@@ -26,8 +26,16 @@
         }
 
         public function addPedido($codFer){
+            //Saco la fecha de hoy
             $fechaPedido = new DateTime('now', new DateTimeZone('Europe/Madrid'));
-            return new Pedido($fechaPedido, 0, $codFer);
+
+            //Uso una variable de sesion para autoincrementar cada vez que haga un pedido
+            if (!isset($_SESSION['contadorPedidoTemp'])) {
+                $_SESSION['contadorPedidoTemp'] = 1;
+            }
+
+            $idTemporal = $_SESSION['contadorPedidoTemp']++;
+            return new Pedido($idTemporal, $fechaPedido, 0, $codFer);
         }
     }
 ?> 

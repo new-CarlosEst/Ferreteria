@@ -43,6 +43,11 @@
                 ?>
             </div>
         </form>
+        <div class="validar">
+            <form action="../index.php?controller=pedido&action=validar" method="post">
+                <button type="submit">Validar Pedido</button>
+            </form>
+        </div>
     </main>
 </body>
 </html>

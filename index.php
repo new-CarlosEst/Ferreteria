@@ -90,7 +90,10 @@
                 }
             }
             else if ($accion === "validar"){
-                
+                $ctrl->enviarPedido($_SESSION["correo"]);
+                echo '<script>
+                    window.location.href="view/pedidoFinal.php";
+                </script>';
             }
             break;
     }

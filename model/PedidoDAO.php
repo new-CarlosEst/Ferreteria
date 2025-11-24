@@ -37,5 +37,39 @@
             $idTemporal = $_SESSION['contadorPedidoTemp']++;
             return new Pedido($idTemporal, $fechaPedido, 0, $codFer);
         }
+
+        public function insertPedido($codFer){
+            try{
+                $sql = "INSERT INTO pedidos (Fecha, Enviado, ferreteria) VALUES (now() , 0, :ferreteria)";
+                $sentenciaPreparada = $this->conexion->prepare($sql);
+
+                //Bindeo y ejecuto
+                $sentenciaPreparada->bindParam(":ferreteria", $codFer);
+                $sentenciaPreparada->execute();
+
+                //Saco el id de este insert
+                $clave = $this->conexion->lastInsertId();
+
+                //Me pongo otro sql con el select
+                $sql2 = "SELECT * FROM pedidos WHERE CodPed = :clave";
+                $sentenciaPreparada = $this->conexion->prepare($sql2);
+
+                //Biendo y ejecuto
+                $sentenciaPreparada->bindParam(":clave", $clave);
+                $sentenciaPreparada->execute();
+
+                //saco los datos como array asociativo y meto los datos en un pedido y lo devuelvo
+                $datosPedido = $sentenciaPreparada->fetch(PDO::FETCH_ASSOC);
+                return new Pedido(
+                    $datosPedido["CodPed"],
+                    $datosPedido["Fecha"],
+                    $datosPedido["Enviado"],
+                    $datosPedido["ferreteria"]
+                );
+            } 
+            catch (PDOException $e){
+                return false;
+            }
+        }
     }
 ?> 

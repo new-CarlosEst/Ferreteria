@@ -96,6 +96,17 @@
             }
             unset($item); // Quito la referencia para que no lo puedo modificar
         }
+
+        public function enviarPedido($correo){
+            //Saco la ferreteria por correo
+            $ferreterias = new FerreteriaDAO();
+            $ferreteria = $ferreterias->getFerreteriaByCorreo($correo);
+
+            //Saco la clave 
+            $clave = $ferreteria->getClave();
+
+            //TODO El for recorriendo el array de la sesion
+        }
     }
 
 

@@ -74,5 +74,11 @@
                 }
             }
         }
+
+        public function createPedido($idProd, $idPedido, $unidades, $idFerreteria){
+            //Inserto el pedido
+            $pedidos = new PedidoDAO();
+            $pedido = $pedidos->insertPedido($idFerreteria);
+        }
     }
 ?>

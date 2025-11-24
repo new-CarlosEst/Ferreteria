@@ -25,5 +25,109 @@ main{
 }
 
 .vacio{
-    font-size: small;
+    font-size: 60px;
+    color: 10px 0;
+    flex-basis: 1340px;
+    height: 100%;
+    display: flex;
+    color: #D05E26;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-ped{
+    margin: 10px 0;
+    color: #D05E26;
+    display: grid;
+    grid-template-columns: 240px 350px 125px 135px 320px 170px;
+    font-weight: normal;
+}
+
+.productos{
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #D05E26;
+    width: 1340px;
+    min-height: 100px;
+}
+
+.item{
+    display: grid;
+    grid-template-columns: 240px 350px 125px 135px 320px 170px;
+    font-weight: 400;
+    align-items: center;
+    justify-content: space-around;
+    color: #D05E26;
+}
+
+img{
+    margin: 0 7px;
+    height: 26px;
+    width: 26px;
+}
+
+.item .unidad {
+    display: flex;
+    height: 26px;
+    background-color: #D9D9D9;
+    align-items: center;
+    justify-content: center;
+}
+
+.item .nombre {
+    padding: 5px;
+}
+
+.item input{
+    margin-left: 10px;
+    width: 270px;
+    height: 20px;
+    background-color: #D9D9D9;
+    border: none;
+    color: #D05E26;
+    font-weight: 400;
+}
+
+.item input:focus{
+    outline: none;
+}
+
+.impar {
+    background-color: #F1F1F6;
+}
+
+.par {
+    background-color: #D1D1E1;
+}
+
+.item .eliminar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 50px;
+    color: #D05E26;
+    font-weight: bold;
+}
+
+.impar button {
+    background-color: #D1D1E1;
+}
+
+.par button {
+    background-color: #AAA8C5;
+}
+
+.impar button:hover{
+    background-color: #b0b0d0;
+}
+
+.par button:hover{
+    background-color: #8a86b5;
 }

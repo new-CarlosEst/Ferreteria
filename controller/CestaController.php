@@ -54,11 +54,11 @@
                             <div class="desc">' . $desc . '</div>
                             <div class="peso">' . $peso . '</div>
                             <div class="unidades">' . $unidades . '</div>
-                            <div class="eliminar">
+                            <div class="unidad">
                                 <img src="../public/resources/icons/BiTrash3Fill.png">
                                 <input type="text" name="unidades[' . $codProd . ']" value="0">
                             </div>
-                            <div class="comprar">
+                            <div class="eliminar">
                                 <button type="submit" name="producto" value="' . $codProd . '">Comprar</button>
                             </div>
                         </div>';

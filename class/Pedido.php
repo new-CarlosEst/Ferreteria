@@ -29,18 +29,48 @@
         /**
          * Constructor para crear un objeto Pedido
          * 
-         * @param int $codPed Codigo del pedido
          * @param DateTime $fecha Fecha en la que se realizo el pedido (formato YYYY-MM-DD HH:MM:SS)
          * @param int $enviado 0 si <b>NO</b> esta enviado, 1 si esta enviado
          * @param int $codFerr Codigo de la ferreterai a la que pertence el pedido
          */
-        public function __construct(int $codPed, DateTime $fecha, int $enviado, int $codFerr){
-            $this->codPedido = $codPed;
+        public function __construct(DateTime $fecha, int $enviado, int $codFerr){
+            $this->codPedido = null;
             $this->fecha = $fecha;
             $this->enviado = $enviado;
             $this->codFerreteria = $codFerr;
         }
 
-        //TODO Getters y setters + toString
+        //Getters y setters
+        public function getCodPedido() {
+            return $this->codPedido;
+        }
+
+        public function setCodPedido($codPedido) {
+            $this->codPedido = $codPedido;
+        }
+
+        public function getFecha() {
+            return $this->fecha;
+        }
+
+        public function setFecha($fecha) {
+            $this->fecha = $fecha;
+        }
+
+        public function getEnviado() {
+            return $this->enviado;
+        }
+
+        public function setEnviado($enviado) {
+            $this->enviado = $enviado;
+        }
+
+        public function getCodFerreteria() {
+            return $this->codFerreteria;
+        }
+
+        public function setCodFerreteria($codFerreteria) {
+            $this->codFerreteria = $codFerreteria;
+        }
     }
 ?>

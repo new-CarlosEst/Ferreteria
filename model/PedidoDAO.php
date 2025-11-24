@@ -24,5 +24,10 @@
             //Esto lo hago asi para que siempre tenga una misma conexion en todos mis archivos y no sea diferente
             $this->conexion = Conexion::getInstancia()->getConexion();
         }
+
+        public function addPedido($codFer){
+            $fechaPedido = new DateTime('now', new DateTimeZone('Europe/Madrid'));
+            return new Pedido($fechaPedido, 0, $codFer);
+        }
     }
 ?> 

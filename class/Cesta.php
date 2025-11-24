@@ -32,13 +32,44 @@
          * @param int $CodCesta Codigo de la cesta
          * @param int $unidades Numero de unidades
           */
-        public function __construct($codProd, $codPed, $codCesta, $unidades){
+        public function __construct($codProd,$codPed, $unidades){
             $this->codProducto = $codProd;
             $this->codPedido = $codPed;
             $this->unidades = $unidades;
+            $this->codCesta = null;
+        }
+
+        //me hago los settes y getters
+        public function getCodProducto(){
+            return $this->codProducto;
+        }
+
+        public function setCodProducto($codProducto){
+            $this->codProducto = $codProducto;
+        }
+
+        public function getCodPedido(){
+            return $this->codPedido;
+        }
+
+        public function setCodPedido($codPedido){
+            $this->codPedido = $codPedido;
+        }
+
+        public function getCodCesta(){
+            return $this->codCesta;
+        }
+
+        public function setCodCesta($codCesta){
             $this->codCesta = $codCesta;
         }
 
-        //TODO Getters y setters 
+        public function getUnidades(){
+            return $this->unidades;
+        }
+
+        public function setUnidades($unidades){
+            $this->unidades = $unidades;
+        }
     }
 ?>

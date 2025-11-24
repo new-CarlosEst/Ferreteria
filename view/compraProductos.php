@@ -37,7 +37,7 @@
             <div class="unidad">Comprar</div>
             <div class="boton"></div>
         </div>
-        <form action="../index.php?controller=pedido&action=pedido" method="post">
+        <form action="../index.php?controller=pedido&action=addPedido" method="post">
             <div class="productos">
                 <?php
                     echo $ctrl->mostrarProductos((int)$_SESSION["idCat"]);

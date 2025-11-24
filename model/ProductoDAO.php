@@ -66,6 +66,33 @@
             } catch (PDOException $e){
                 return false;
             }
+        }
+
+        public function getProductoById($idProd){
+            try{
+                //Hacemos la sentencia
+                $sql = "SELECT * FROM productos WHERE CodProd = :id";
+
+                //Hacemos un prepared statement para evitar inyeccion sql 
+                $sentenciaPreparada = $this->conexion->prepare($sql);
+
+                //Bindeo el parametro $user a :correo, ejecutamos la sentencia y lo meto todo en un array asociativo 
+                $sentenciaPreparada->bindValue(':id', $idProd);
+                $sentenciaPreparada->execute();
+                $datosProducto = $sentenciaPreparada->fetch(PDO::FETCH_ASSOC);
+
+                //Devolvemos el objeto
+                return new Producto(
+                    $datosProducto["CodProd"], 
+                    $datosProducto["Nombre"],
+                    $datosProducto["Descripcion"],
+                    $datosProducto["Peso"],
+                    $datosProducto["Stock"],
+                    $datosProducto["Categoria"]
+                );
+            } catch (PDOException $e){
+                return false;
             }
+        }
     }
 ?> 

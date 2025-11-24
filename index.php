@@ -10,6 +10,7 @@
 
     //Importo todos los controladores
     require_once __DIR__ . "/controller/FerreteriaController.php";
+    require_once __DIR__ . "/controller/CestaController.php";
 
     //si entro con post
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -48,6 +49,29 @@
                     window.location.href="view/compraProductos.php";
                 </script>';
             }
+            break;
+        
+        case "pedido":
+            $ctrl = new CestaController();
+            if ($accion === "addPedido"){
+                //Saco el id del producto del boton y saco el que coincida con el de las unidades el id
+                $idProducto = (int)$_POST["producto"];
+                $unidades = isset($_POST["unidades"][$idProducto]) ? (int)$_POST["unidades"][$idProducto] : 0;
+                
+                if ($unidades <= 0){
+                    echo '<script>
+                        window.alert("No puedes introducir 0 o menos unidades");
+                        window.location.href="view/compraProductos.php";
+                    </script>';
+                }
+                else {
+                    $ctrl->hacerPedido($idProducto, $unidades, $_SESSION["correo"]);
+                    echo '<script>
+                        window.location.href="view/lineaPedido.php";
+                    </script>';
+                }
+            }
+            break;
     }
 }
 ?>

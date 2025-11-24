@@ -50,20 +50,22 @@
                     $peso = $producto->getPeso();
                     $stock = $producto->getStock();
 
+                    //Aqui en box no puedo poner name unidades a secas al input
+                    //hay que ponerle un name unico pq si le pones el mismo cogera todo el rato el valor de el que esta mas cerca del boton submit.
                     $box = '
-                    <div class="item ' . $par . '">
-                        <div class="nombre">' . $nb . '</div>
-                        <div class="desc">' . $desc . '</div>
-                        <div class="peso">' . $peso . '</div>
-                        <div class="stock">' . $stock . '</div>
-                        <div class="unidad">
-                            <img src="../public/resources/icons/MdiCart.png">
-                            <input type="text" name="unidades">
-                        </div>
-                        <div class="comprar">
-                            <button type="submit" name="producto" value="' . $id . '">Comprar</button>
-                        </div>
-                    </div>';
+                        <div class="item ' . $par . '">
+                            <div class="nombre">' . $nb . '</div>
+                            <div class="desc">' . $desc . '</div>
+                            <div class="peso">' . $peso . '</div>
+                            <div class="stock">' . $stock . '</div>
+                            <div class="unidad">
+                                <img src="../public/resources/icons/MdiCart.png">
+                                <input type="text" name="unidades[' . $id . ']" value="0">
+                            </div>
+                            <div class="comprar">
+                                <button type="submit" name="producto" value="' . $id . '">Comprar</button>
+                            </div>
+                        </div>';
 
                     $par = ($par == "impar") ? $par="par" : $par="impar";
 

@@ -68,6 +68,9 @@
             }
         }
 
+        /**
+         * Funcion que hace un select segun un id pasado por parametro y te devuelve el objeto producto
+         */
         public function getProductoById($idProd){
             try{
                 //Hacemos la sentencia
@@ -91,6 +94,25 @@
                     $datosProducto["Categoria"]
                 );
             } catch (PDOException $e){
+                return false;
+            }
+        }
+
+        /**
+         * Funcion que te actualiza el stock
+         */
+        function updateStockOfProduto($unidades, $idProducto) {
+            try {
+                $sql = "UPDATE productos SET Stock = Stock + :unidades WHERE CodProd = :idProducto";
+                
+                $sentenciaPreparada = $this->conexion->prepare($sql);
+                $sentenciaPreparada->bindParam(':unidades', $unidades, PDO::PARAM_INT);
+                $sentenciaPreparada->bindParam(':idProducto', $idProducto, PDO::PARAM_INT);
+                
+                $sentenciaPreparada->execute();
+                
+                return $sentenciaPreparada->rowCount();
+            } catch (PDOException $e) {
                 return false;
             }
         }

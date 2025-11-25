@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/menu.css?v=1">
-    <link rel="stylesheet" href="../public/css/pedidoFinal.css?v=1">
+    <link rel="stylesheet" href="../public/css/validado.css?v=1">
     <title>Pedido Realizado</title>
 </head>
 <body>
@@ -36,10 +36,17 @@
         <div class="pedido">
             <h2>Detalles del Pedido</h2>
 
+            <div class="header-datos">
+                <div class="nombre">Nombre</div>
+                <div class="desc">Descripcion</div>
+                <div class="peso">Peso</div>
+                <div class="unidades">Unidades</div>
+            </div>
             <div class="datos-pedido">
                 <?php
                     $ctrl = new CestaController();
                     $ctrl->listaPedidoFinal();
+                    $ctrl->actualizarStock();
                     $ctrl->limpiarCesta();
                 ?>
             </div>

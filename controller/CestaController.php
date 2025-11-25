@@ -161,6 +161,25 @@
         }
 
         /**
+         * actualizar el stock
+         */
+        function actualizarStock() {
+            try {
+                $producto = new ProductoDAO();
+                foreach ($_SESSION['cesta'] as $item) {
+                    $idProducto = $item['codProducto']; // o $item['CodProd'] según tu estructura
+                    $unidades = $item['unidades']; // o $item['cantidad'] según tu estructura
+                    
+                    $producto->updateStockOfProduto($unidades, $idProducto);
+                }
+                
+                return true;
+            } catch (Exception $e) {
+                return false;
+            }
+        }
+
+        /**
          * Funcion que limpia el array de la variable de session cesta
          */
         public function limpiarCesta(){

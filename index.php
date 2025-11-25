@@ -93,7 +93,7 @@
                 $pedido = $ctrl->enviarPedido($_SESSION["correo"]);
                 if ($pedido){
                     echo '<script>
-                    window.location.href="view/pedidoFinal.php";
+                    window.location.href="view/validado.php";
                     </script>';
                 }
                 else{

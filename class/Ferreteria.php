@@ -94,5 +94,9 @@ class Ferreteria {
     public function getCorreo (){
         return $this->correo;
     }
+
+    public function getCodFerreteria(){
+        return $this->codFerreteria;
+    }
 }
 ?>

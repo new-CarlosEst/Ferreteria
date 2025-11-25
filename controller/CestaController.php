@@ -119,7 +119,7 @@
             }
 
             // Saco la clave 
-            $clave = $ferreteria->getClave();
+            $clave = $ferreteria->getCodFerreteria();
 
             // Variable para guardar el número de pedido
             $nPed = null;

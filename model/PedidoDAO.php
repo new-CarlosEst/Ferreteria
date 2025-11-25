@@ -25,6 +25,9 @@
             $this->conexion = Conexion::getInstancia()->getConexion();
         }
 
+        /**
+         * Añadir un objeto pedido temporal
+         */
         public function addPedido($codFer){
             //Saco la fecha de hoy
             $fechaPedido = new DateTime('now', new DateTimeZone('Europe/Madrid'));
@@ -38,6 +41,9 @@
             return new Pedido($idTemporal, $fechaPedido, 0, $codFer);
         }
 
+        /**
+         * Funcion que devuelve un objeto pedido al hacer un insert en la tabla pedidos
+         */
         public function insertPedido($codFer){
             try{
                 $sql = "INSERT INTO pedidos (Fecha, Enviado, ferreteria) VALUES (now(), 0, :ferreteria)";

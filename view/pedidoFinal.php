@@ -40,6 +40,7 @@
                 <?php
                     $ctrl = new CestaController();
                     $ctrl->listaPedidoFinal();
+                    $ctrl->limpiarCesta();
                 ?>
             </div>
         </div>

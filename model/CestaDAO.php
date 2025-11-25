@@ -75,6 +75,9 @@
             }
         }
 
+        /**
+         * Funcion que te hace un insert en la tabla pedidosproductos y te devuelve el codigo que genera
+         */
         public function createPedido($idProd, $unidades, $idFerreteria){
             //Inserto el pedido
             $pedidos = new PedidoDAO();

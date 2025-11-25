@@ -129,6 +129,9 @@
             }
         }
 
+        /**
+         * Funcion que imprime los datos de cada producto del pedido final
+         */
         public function listaPedidoFinal(){
             $productos = new ProductoDAO();
                     $par = "impar";
@@ -156,7 +159,12 @@
                         echo $box;
                     }
         }
+
+        /**
+         * Funcion que limpia el array de la variable de session cesta
+         */
+        public function limpiarCesta(){
+            $_SESSION["cesta"] = [];
+        }
     }
-
-
 ?>

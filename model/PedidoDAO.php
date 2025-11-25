@@ -40,26 +40,33 @@
 
         public function insertPedido($codFer){
             try{
-                $sql = "INSERT INTO pedidos (Fecha, Enviado, ferreteria) VALUES (now() , 0, :ferreteria)";
+                $sql = "INSERT INTO pedidos (Fecha, Enviado, ferreteria) VALUES (now(), 0, :ferreteria)";
                 $sentenciaPreparada = $this->conexion->prepare($sql);
 
-                //Bindeo y ejecuto
-                $sentenciaPreparada->bindParam(":ferreteria", $codFer);
+                // Bindeo y ejecuto
+                $cod = (int)$codFer;
+                $sentenciaPreparada->bindParam(":ferreteria", $cod);
                 $sentenciaPreparada->execute();
 
-                //Saco el id de este insert
+                // Saco el id de este insert
                 $clave = $this->conexion->lastInsertId();
 
-                //Me pongo otro sql con el select
+                // Me pongo otro sql con el select
                 $sql2 = "SELECT * FROM pedidos WHERE CodPed = :clave";
                 $sentenciaPreparada = $this->conexion->prepare($sql2);
 
-                //Biendo y ejecuto
+                // Bindeo y ejecuto
                 $sentenciaPreparada->bindParam(":clave", $clave);
                 $sentenciaPreparada->execute();
 
-                //saco los datos como array asociativo y meto los datos en un pedido y lo devuelvo
+                // Saco los datos como array asociativo
                 $datosPedido = $sentenciaPreparada->fetch(PDO::FETCH_ASSOC);
+                
+                // VERIFICAR si fetch devolvió datos
+                if ($datosPedido === false) {
+                    echo throw new PDOException("No se pudo recuperar el pedido recién creado");
+                }
+                
                 return new Pedido(
                     $datosPedido["CodPed"],
                     $datosPedido["Fecha"],
@@ -68,6 +75,8 @@
                 );
             } 
             catch (PDOException $e){
+                // OPCIONAL: Log del error para debugging
+                error_log("Error en insertPedido: " . $e->getMessage());
                 return false;
             }
         }

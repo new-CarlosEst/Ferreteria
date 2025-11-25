@@ -4,6 +4,9 @@
     //compruebo la session
     require_once __DIR__ . "/../util/comprobarSesion.php";
 
+    //Includo el controller de cesta
+    require_once __DIR__ . "/../controller/CestaController.php";
+
 
 ?>
 
@@ -26,7 +29,7 @@
 
         <div class="numPed">
             <?php
-
+                echo "Nº Pedido " . $_SESSION["numPed"];
             ?>
         </div>
 
@@ -34,7 +37,10 @@
             <h2>Detalles del Pedido</h2>
 
             <div class="datos-pedido">
-                
+                <?php
+                    $ctrl = new CestaController();
+                    $ctrl->listaPedidoFinal();
+                ?>
             </div>
         </div>
     </main>

@@ -32,7 +32,7 @@
 
         public function listarPedidos(){
             if (!isset($_SESSION["cesta"])){
-                
+                echo '<div class="vacio">No hay productos seleccionados aun</div>';
             }
             else {
 
@@ -97,15 +97,75 @@
             unset($item); // Quito la referencia para que no lo puedo modificar
         }
 
+        /**
+         * Funcion que te llama a la funcion create pedido que hace los inserts tanto a pedido, como a pedido producto
+         */
         public function enviarPedido($correo){
-            //Saco la ferreteria por correo
+            if (!isset($_SESSION["cesta"])){
+                return false;
+            }
+            
+            if (count($_SESSION["cesta"]) <= 0){
+                return false;
+            }
+            
+            // Saco la ferreteria por correo
             $ferreterias = new FerreteriaDAO();
             $ferreteria = $ferreterias->getFerreteriaByCorreo($correo);
+            
+            // VALIDAR que se encontró la ferretería
+            if ($ferreteria === false || $ferreteria === null) {
+                return false;
+            }
 
-            //Saco la clave 
+            // Saco la clave 
             $clave = $ferreteria->getClave();
 
-            //TODO El for recorriendo el array de la sesion
+            // Variable para guardar el número de pedido
+            $nPed = null;
+            
+            foreach ($_SESSION['cesta'] as &$item) {
+                $resultado = $this->dao->createPedido($item['codProducto'], $item["unidades"], $clave);
+                
+                // VALIDAR que se creó correctamente
+                if ($resultado === false) {
+                    return false;
+                }
+                
+                $nPed = $resultado;
+            }
+
+            // Meto el numPedido en una session
+            $_SESSION["numPed"] = $nPed;
+            return true;
+}
+
+        public function listaPedidoFinal(){
+            $productos = new ProductoDAO();
+                    $par = "impar";
+                    foreach($_SESSION["cesta"] as $pedido){
+                        //Saco unidades, codProd e codPedido
+                        $codProd = $pedido['codProducto'];
+                        $codPedido = $pedido['codPedido'];
+                        $unidades = $pedido['unidades'];
+
+                        //Saco el producto segun el id del producto
+                        $producto = $productos->getProductoById($codProd);
+                        $nb = $producto->getNombre();
+                        $desc = $producto->getDescripcion();
+                        $peso = $producto->getPeso();
+
+                        //meto los datos en un string y lo imprimo
+                        $box = '
+                            <div class="item ' . $par . '">
+                                <div class="nombre">' . $nb . '</div>
+                                <div class="desc">' . $desc . '</div>
+                                <div class="peso">' . $peso . '</div>
+                                <div class="unidades">' . $unidades . '</div>';
+
+                        $par = ($par == "impar") ? $par="par" : $par="impar";
+                        echo $box;
+                    }
         }
     }
 

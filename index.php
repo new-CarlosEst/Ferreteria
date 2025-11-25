@@ -90,10 +90,18 @@
                 }
             }
             else if ($accion === "validar"){
-                $ctrl->enviarPedido($_SESSION["correo"]);
-                echo '<script>
+                $pedido = $ctrl->enviarPedido($_SESSION["correo"]);
+                if ($pedido){
+                    echo '<script>
                     window.location.href="view/pedidoFinal.php";
-                </script>';
+                    </script>';
+                }
+                else{
+                    echo '<script>
+                    window.alert("No puede enviar la cesta vacia");
+                    window.location.href="view/lineaPedido.php";
+                    </script>';
+                }
             }
             break;
     }

@@ -26,14 +26,14 @@
             else {
                 foreach($categorias as $categoria){
                     //Saco todos los datos
-                    $n = $categoria->getNombre();
-                    $d = $categoria->getDescripcion();
+                    $nb = $categoria->getNombre();
+                    $desc = $categoria->getDescripcion();
                     $id = $categoria->getCodCategoria();
 
                     //Pongo en un boton el value como el id de la categoria, asi despues puedo hacer un consulta con ese id a suminsitros
                     $box = '<button class="item" name="categoria" value="' . $id . '">
-                        <div class="nombre">' . $n . '</div>
-                        <div class="desc">' . $d . '</div>
+                        <div class="nombre">' . $nb . '</div>
+                        <div class="desc">' . $desc . '</div>
                     </button>';
 
                     echo $box;

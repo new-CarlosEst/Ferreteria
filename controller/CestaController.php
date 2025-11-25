@@ -104,41 +104,30 @@
             if (!isset($_SESSION["cesta"])){
                 return false;
             }
-            
-            if (count($_SESSION["cesta"]) <= 0){
-                return false;
-            }
-            
-            // Saco la ferreteria por correo
-            $ferreterias = new FerreteriaDAO();
-            $ferreteria = $ferreterias->getFerreteriaByCorreo($correo);
-            
-            // VALIDAR que se encontró la ferretería
-            if ($ferreteria === false || $ferreteria === null) {
-                return false;
-            }
-
-            // Saco la clave 
-            $clave = $ferreteria->getCodFerreteria();
-
-            // Variable para guardar el número de pedido
-            $nPed = null;
-            
-            foreach ($_SESSION['cesta'] as &$item) {
-                $resultado = $this->dao->createPedido($item['codProducto'], $item["unidades"], $clave);
-                
-                // VALIDAR que se creó correctamente
-                if ($resultado === false) {
+            else {
+                if (count($_SESSION["cesta"]) <= 0){
                     return false;
                 }
-                
-                $nPed = $resultado;
-            }
+                else {
+                    //Saco la ferreteria por correo
+                    $ferreterias = new FerreteriaDAO();
+                    $ferreteria = $ferreterias->getFerreteriaByCorreo($correo);
 
-            // Meto el numPedido en una session
-            $_SESSION["numPed"] = $nPed;
-            return true;
-}
+                    //Saco el código de ferretería
+                    $codFerreteria = $ferreteria->getCodFerreteria();
+
+                    //Hago la variable para guardar la clave del pedido producto (que sera el numero de pedido);
+                    $nPed = "";
+                    foreach ($_SESSION['cesta'] as $item) {
+                        $nPed = $this->dao->createPedido($item["codProducto"], $item["unidades"], $codFerreteria);
+                    }
+
+                    //Meto el numPedido en una session
+                    $_SESSION["numPed"] = $nPed;
+                    return true;
+                }
+            }
+        }
 
         public function listaPedidoFinal(){
             $productos = new ProductoDAO();

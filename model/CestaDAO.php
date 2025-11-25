@@ -76,38 +76,29 @@
         }
 
         public function createPedido($idProd, $unidades, $idFerreteria){
-            // Inserto el pedido
+            //Inserto el pedido
             $pedidos = new PedidoDAO();
             $pedido = $pedidos->insertPedido($idFerreteria);
 
-            // VALIDAR que el pedido se creó correctamente
-            if ($pedido === false) {
-                return false;
-            }
-
-            // Saco el codigo del pedido
+            //Saco el codigo del pedido
             $idPed = $pedido->getCodPedido();
 
             try{
-                // ME hago el prepared
+                //ME hago el prepared
                 $sql = "INSERT INTO pedidosproductos (Pedido, Producto, Unidades) VALUES (:idPed, :idProd, :unidades)";
                 $sentenciaPreparada = $this->conexion->prepare($sql);
 
-                // Bindeo y ejecuto (CORREGIDO el orden de parámetros)
-                $prod = (int)$idProd;
-                $ped = (int)$idPed;
-                $uni = (int)$unidades;
-                $sentenciaPreparada->bindParam(":idPed", $ped);
-                $sentenciaPreparada->bindParam(":idProd", $prod);
-                $sentenciaPreparada->bindParam(":unidades", $uni);
+                //Biendo y ejecuto
+                $sentenciaPreparada->bindParam(":idPed", $idPed);
+                $sentenciaPreparada->bindParam(":idProd", $idProd);
+                $sentenciaPreparada->bindParam(":unidades", $unidades);
                 $sentenciaPreparada->execute();
 
-                // Devuelvo el código del pedido (no lastInsertId de pedidosproductos)
+                //Devuelvo el código del pedido
                 return $idPed;
 
             }
             catch (PDOException $e){
-                error_log("Error en createPedido: " . $e->getMessage());
                 return false;
             }
         }

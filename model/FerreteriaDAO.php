@@ -51,6 +51,7 @@
                     $ferreteria = new Ferreteria();
                     $ferreteria->setCorreo($datosferreteria["Correo"]);
                     $ferreteria->setClave($datosferreteria["Clave"]);
+                    $ferreteria->setCodFerreteria($datosferreteria["CodRes"]);
                     return $ferreteria;
                 }
                 

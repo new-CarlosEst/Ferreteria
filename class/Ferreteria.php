@@ -98,5 +98,9 @@ class Ferreteria {
     public function getCodFerreteria(){
         return $this->codFerreteria;
     }
+
+    public function setCodFerreteria($cod){
+        $this->codFerreteria = $cod;
+    }
 }
 ?>

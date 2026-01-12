@@ -31,3 +31,7 @@ ferreteria/
 ```
 
 - Aplicacion hecha con php vanila usando MVC
+
+## Montaje del entorno para que la aplicacion sea funcional
+- En public, dentro de servidor habra un .yml. Teniendo docker instalado en tu maquina habra que hacer un docker compose up --d para montar el entorno.
+- Este contendra un servidor apache-php, un servidor mySql y un servidor de apache phpmyadmin para gestionar la base de datos. 
